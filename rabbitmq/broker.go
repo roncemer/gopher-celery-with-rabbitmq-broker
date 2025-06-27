@@ -126,14 +126,12 @@ func (br *Broker) Send(m []byte, q string) error {
 		var msgmap map[string]interface{}
 		err := json.Unmarshal(m, &msgmap)
 		if err != nil {
-			log.Panicf("Failed to publish a message: %s", err)
 			return err
 		}
 
 		headers = msgmap["headers"].(map[string]interface{})
 		body, err = base64.StdEncoding.DecodeString(msgmap["body"].(string))
 		if err != nil {
-			log.Panicf("Failed to publish a message: %s", err)
 			return err
 		}
 		contentType = msgmap["content-type"].(string)
