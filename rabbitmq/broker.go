@@ -158,9 +158,6 @@ func (br *Broker) Send(m []byte, q string) error {
 			ReplyTo:         replyTo,
 			Body:            body,
 		})
-	if err != nil {
-		log.Panicf("Failed to publish a message: %s", err)
-	}
 	return err
 }
 
